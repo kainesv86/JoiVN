@@ -5,7 +5,7 @@ describe("JoiVn", () => {
         const schema = (input: any) =>
                 joi
                         .object({
-                                data: joiVn.string().max(5).min(2).required(),
+                                data: joiVn.string().max(5).min(2).required().empty(),
                         })
                         .validate(input);
 
@@ -20,7 +20,7 @@ describe("JoiVn", () => {
                         console.log(error?.details[0].message);
                         expect(error).toBeDefined();
                 });
-                it("Pass require", () => {
+                it("Pass empty", () => {
                         const { error } = schema({ data: "" });
                         console.log(error?.details[0].message);
                         expect(error).toBeDefined();
