@@ -48,6 +48,18 @@ const NumberVnLang = {
         "number.precision": "{{#label}} không được nhiều {{#limit}} chữ số thập phân",
         "number.unsafe": "{{#label}} phải là safe number of Javascript",
 };
+
 // ======================= Any =======================
 
-export { StringVnLang, NumberVnLang };
+const AnyVnLang = {
+        "any.custom": "{{#label}} xác thực tuỳ chỉnh không thành công vì {{#error.message}}",
+        "any.default": "{{#label}} đã xảy ra lỗi khi chạy default method",
+        "any.failover": "{{#label}} đã xảy ra lỗi khi chạy failover method",
+        "any.invalid": "{{#label}} chứa giá trị không hợp lệ",
+        "any.only": '{{#label}} phải {if(#valids.length == 1, "", "one of ")}{{#valids}}',
+        "any.ref": "{{#label}} {{#arg}} references {{:#ref}} which {{#reason}}",
+        "any.required": "{{#label}} là bắt buộc",
+        "any.unknown": "{{#label}} không được phép",
+};
+
+export { StringVnLang, NumberVnLang, AnyVnLang };
