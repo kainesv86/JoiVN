@@ -1,11 +1,11 @@
 import * as joi from "joi";
-import { JoiVnLang } from "../index";
+import { StringVnLang } from "../index";
 
 describe("JoiVn", () => {
         const schema = (input: any) =>
                 joi
                         .object({
-                                data: joi.string().min(2).max(5).empty().messages(JoiVnLang),
+                                data: joi.string().min(2).max(5).empty().messages(StringVnLang),
                         })
                         .validate(input);
 

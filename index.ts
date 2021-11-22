@@ -1,5 +1,5 @@
-export const JoiVnLang = {
-        // ======================= String  =======================
+// ======================= String  =======================
+const StringVnLang = {
         "string.alphanum": "{{#label}} chỉ chứ các ký tự là chữ số",
         "string.base": "{{#label}} phải là biến string",
         "string.base64": "{{#label}} phải hợp lệ với base64 string",
@@ -31,5 +31,23 @@ export const JoiVnLang = {
         "string.uriCustomScheme": "{{#label}} phải là một uri phù với scheme khớp với {{#scheme}} pattern",
         "string.uriRelativeOnly": "{{#label}} phải là relative uri hợp lệ",
         "string.uppercase": "{{#label}} chỉ chứ các ký tự in hoa",
-        // ======================= Any =======================
 };
+
+const NumberVnLang = {
+        "number.base": "{{#label}} phải là một con số",
+        "number.greater": "{{#label}} phải lớn hơn {{#limit}}",
+        "number.infinity": "{{#label}} không thể là vô cực",
+        "number.integer": "{{#label}} phải là số nguyên",
+        "number.less": "{{#label}} phải nhỏ hơn {{#limit}}",
+        "number.max": "{{#label}} phải nhỏ hơn hoặc bằng {{#limit}}",
+        "number.min": "{{#label}} phải lớn hơn hoặc bằng {{#limit}}",
+        "number.multiple": "{{#label}} phải là bội số của {{#multiple}}",
+        "number.negative": "{{#label}} phải là số âm",
+        "number.port": "{{#label}} phải là port hợp lệ",
+        "number.positive": "{{#label}} phải là số dương",
+        "number.precision": "{{#label}} không được nhiều {{#limit}} chữ số thập phân",
+        "number.unsafe": "{{#label}} phải là safe number of Javascript",
+};
+// ======================= Any =======================
+
+export { StringVnLang, NumberVnLang };
