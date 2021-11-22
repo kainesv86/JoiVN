@@ -1,11 +1,11 @@
 import * as joi from "joi";
-import { joiVn } from "../index";
+import { JoiVnLang } from "../index";
 
 describe("JoiVn", () => {
         const schema = (input: any) =>
                 joi
                         .object({
-                                data: joiVn.string().max(5).min(2).required().empty(),
+                                data: joi.string().min(2).max(5).empty().messages(JoiVnLang),
                         })
                         .validate(input);
 
@@ -22,6 +22,15 @@ describe("JoiVn", () => {
                 });
                 it("Pass empty", () => {
                         const { error } = schema({ data: "" });
+                        console.log(error?.details[0].message);
+                        expect(error).toBeDefined();
+                });
+        });
+
+        describe("Any VN lang", () => {
+                it("Pass required", () => {
+                        const anySchema = joi.object({ data: joi.any().required() });
+                        const { error } = anySchema.validate({});
                         console.log(error?.details[0].message);
                         expect(error).toBeDefined();
                 });
