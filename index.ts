@@ -70,4 +70,24 @@ const AlternativesVnLang = {
         "alternatives.types": "{{#label}} phải là một trong {{#types}}",
 };
 
-export { StringVnLang, NumberVnLang, AnyVnLang };
+const ArrayVnLang = {
+        "array.base": "{{#label}} phải là một array",
+        "array.excludes": "{{#label}} chứa một giá trị bị loại trừ",
+        "array.hasKnown": "{{#label}} không chứa ít nhất một kết quả bắt buộc phù cho loại {:#patternLabel}",
+        "array.hasUnknown": "{{#label}} không chứa ít nhất một kết phù hợp bắt buộc",
+        "array.includes": "{{#label}} không khớp với bất kỳ loại cho phép",
+        "array.includesRequiredBoth": "{{#label}} không bao gồm {{#knownMisses}} và {{#unknownMisses}} other required value(s)",
+        "array.includesRequiredKnowns": "{{#label}} does not contain {{#knownMisses}}",
+        "array.includesRequiredUnknowns": "{{#label}} does not contain {{#unknownMisses}} (các) giá trị bắt buộc khác",
+        "array.length": "{{#label}} phải chứa {{#limit}} phần tử",
+        "array.max": "{{#label}} phải chứ ít hơn hoặc bằng {{#limit}} phần tử",
+        "array.min": "{{#label}} phải chứa ít nhất {{#limit}} phần tử",
+        "array.orderedLength": "{{#label}} phải chứa tối đa {{#limit}} phần tử",
+        "array.sort": "{{#label}} phải sắp xếp theo thứ tự {#order} dựa trên {{#by}}",
+        "array.sort.mismatching": "{{#label}} không thể sắp xếp do các loại không khớp",
+        "array.sort.unsupported": "Không thể sắp xếp {{#label}} do loại {#type} không được hỗ trợ",
+        "array.sparse": "{{#label}} không được là một array thưa thớt",
+        "array.unique": "{{#label}} chứa giá trị trùng lặp",
+};
+
+export { StringVnLang, NumberVnLang, AnyVnLang, AlternativesVnLang, ArrayVnLang };
