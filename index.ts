@@ -62,4 +62,12 @@ const AnyVnLang = {
         "any.unknown": "{{#label}} không được phép",
 };
 
+const AlternativesVnLang = {
+        "alternatives.all": "{{#label}} không khớp với tất cả các kiểu bắt buộc",
+        "alternatives.any": "{{#label}} không khớp với bất kỳ kiểu cho phép",
+        "alternatives.match": "{{#label}} không khớp với bất kỳ kiểu cho phép",
+        "alternatives.one": "{{#label}} khớp nhiều hơn một loại cho phép",
+        "alternatives.types": "{{#label}} phải là một trong {{#types}}",
+};
+
 export { StringVnLang, NumberVnLang, AnyVnLang };
