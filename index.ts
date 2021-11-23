@@ -116,4 +116,11 @@ const DataVnLang = {
         "date.format.unix": "Dấu thời gian hoặc số giây",
 };
 
-export { StringVnLang, NumberVnLang, AnyVnLang, AlternativesVnLang, ArrayVnLang, BinaryVnLang, BooleanVnLang };
+const FunctionVnLang = {
+        "function.arity": "{{#label}} phải có {{#n}} arity (số hàng của function)",
+        "function.class": "{{#label}} phải là một class",
+        "function.maxArity": "{{#label}} phải có arity (số hàng của function) nhỏ hơn hoặc bằng {{#n}}",
+        "function.minArity": "{{#label}} phải có arity (số hàng của function) lớn hơn hoặc bằng {{#n}}",
+};
+
+export { StringVnLang, NumberVnLang, AnyVnLang, AlternativesVnLang, ArrayVnLang, BinaryVnLang, BooleanVnLang, DataVnLang, FunctionVnLang };
