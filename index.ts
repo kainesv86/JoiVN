@@ -76,9 +76,9 @@ const ArrayVnLang = {
         "array.hasKnown": "{{#label}} không chứa ít nhất một kết quả bắt buộc phù cho loại {:#patternLabel}",
         "array.hasUnknown": "{{#label}} không chứa ít nhất một kết phù hợp bắt buộc",
         "array.includes": "{{#label}} không khớp với bất kỳ loại cho phép",
-        "array.includesRequiredBoth": "{{#label}} không bao gồm {{#knownMisses}} và {{#unknownMisses}} other required value(s)",
-        "array.includesRequiredKnowns": "{{#label}} does not contain {{#knownMisses}}",
-        "array.includesRequiredUnknowns": "{{#label}} does not contain {{#unknownMisses}} (các) giá trị bắt buộc khác",
+        "array.includesRequiredBoth": "{{#label}} không bao gồm {{#knownMisses}} và {{#unknownMisses}} (các) giá trị bắt buộc khác",
+        "array.includesRequiredKnowns": "{{#label}} không chứa {{#knownMisses}}",
+        "array.includesRequiredUnknowns": "{{#label}} không chứa {{#unknownMisses}} (các) giá trị bắt buộc khác",
         "array.length": "{{#label}} phải chứa {{#limit}} phần tử",
         "array.max": "{{#label}} phải chứ ít hơn hoặc bằng {{#limit}} phần tử",
         "array.min": "{{#label}} phải chứa ít nhất {{#limit}} phần tử",
@@ -90,4 +90,11 @@ const ArrayVnLang = {
         "array.unique": "{{#label}} chứa giá trị trùng lặp",
 };
 
-export { StringVnLang, NumberVnLang, AnyVnLang, AlternativesVnLang, ArrayVnLang };
+const BinaryVnLang = {
+        "binary.base": "{{#label}} phải là một buffer hoặc một string",
+        "binary.length": "{{#label}} phải là {{#limit}} bytes",
+        "binary.max": "{{#label}} phải ít hơn hoặc bằng {{#limit}} bytes",
+        "binary.min": "{{#label}} phải ít nhất {{#limit}} bytes",
+};
+
+export { StringVnLang, NumberVnLang, AnyVnLang, AlternativesVnLang, ArrayVnLang, BinaryVnLang };
