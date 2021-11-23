@@ -236,4 +236,108 @@ describe("JoiVn", () => {
                         expect(value).toBe("Lunar Tear");
                 });
         });
+        describe("Number VN lang", () => {
+                const schema = joi.number().messages(NumberVnLang);
+                it("Pass base", () => {
+                        let test = schema;
+                        const { error } = test.validate("122aa3");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass max", () => {
+                        let test = schema;
+                        test = test.max(50);
+                        const { error } = test.validate(555);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass min", () => {
+                        let test = schema;
+                        test = test.min(50);
+                        const { error } = test.validate(45);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass infinity", () => {
+                        let test = schema;
+                        const { error } = test.validate(1 / 0);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass integer", () => {
+                        let test = schema;
+                        test = test.integer();
+                        const { error } = test.validate(45.231);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass less", () => {
+                        let test = schema;
+                        test = test.less(50);
+                        const { error } = test.validate(50);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass greater", () => {
+                        let test = schema;
+                        test = test.greater(50);
+                        const { error } = test.validate(50);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass multiple", () => {
+                        let test = schema;
+                        test = test.multiple(3);
+                        const { error } = test.validate(50);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass negative", () => {
+                        let test = schema;
+                        test = test.negative();
+                        const { error } = test.validate(50);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass positive", () => {
+                        let test = schema;
+                        test = test.positive();
+                        const { error } = test.validate(-50);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass port", () => {
+                        let test = schema;
+                        test = test.port();
+                        const { error } = test.validate(65536);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass precision", () => {
+                        let test = schema;
+                        test = test.precision(2);
+                        const { error } = test.validate(123);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass unsafe", () => {
+                        let test = schema;
+                        test = test.unsafe();
+                        const { error } = test.validate(9007199254740995);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+        });
 });
