@@ -97,4 +97,8 @@ const BinaryVnLang = {
         "binary.min": "{{#label}} phải ít nhất {{#limit}} bytes",
 };
 
+const BooleanVnLang = {
+        "boolean.base": "{{#label}} must be a boolean",
+};
+
 export { StringVnLang, NumberVnLang, AnyVnLang, AlternativesVnLang, ArrayVnLang, BinaryVnLang };
