@@ -148,6 +148,13 @@ const KeysVnLang = {
         "object.xor": "{{#label}} chứa xung đột giữa các peers độc quyền {{#peersWithLabels}}",
 };
 
+const SymbolVnLang = {
+        "symbol.base": "{{#label}} phải là symbol",
+        "symbol.map": "{{#label}} phải là một trong {{#map}}",
+};
+
+const ObjectVnLang = { ...KeysVnLang };
+
 export {
         StringVnLang,
         NumberVnLang,
@@ -159,4 +166,6 @@ export {
         DataVnLang,
         FunctionVnLang,
         KeysVnLang,
+        ObjectVnLang,
+        SymbolVnLang,
 };
