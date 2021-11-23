@@ -179,5 +179,61 @@ describe("JoiVn", () => {
                         console.log("To upper case: " + value);
                         expect(value).toBe("JOI-VN-LANG");
                 });
+
+                it("Pass max length", () => {
+                        let test = schema;
+                        test = test.max(5);
+                        const { error } = test.validate("a2b3c4");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass min length", () => {
+                        let test = schema;
+                        test = test.min(5);
+                        const { error } = test.validate("a2b3");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass token", () => {
+                        let test = schema;
+                        test = test.token();
+                        const { error } = test.validate("a56sd65asd4554--zx5c64.das5das564d56s564ad654a56d.xc1z1x5");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass token", () => {
+                        let test = schema;
+                        test = test.token();
+                        const { error } = test.validate("a56sd65asd4554--zx5c64.das5das564d56s564ad654a56d.xc1z1x5");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass pattern", () => {
+                        let test = schema;
+                        test = test.pattern(/^[0-9]+$/, "numbers");
+                        const { error } = test.validate("alpha");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass pattern invert", () => {
+                        let test = schema;
+                        test = test.pattern(/^[a-z]+$/, { invert: true });
+                        const { error } = test.validate("lowercase");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass trim", () => {
+                        let test = schema;
+                        test = test.trim();
+                        const { value } = test.validate("   Lunar Tear  ");
+                        console.log("After trim: " + value);
+                        expect(value).toBe("Lunar Tear");
+                });
         });
 });

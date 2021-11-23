@@ -17,10 +17,11 @@ const StringVnLang = {
         "string.isoDate": "{{#label}} phải ở định dạng ISO date",
         "string.isoDuration": "{{#label}} phải là  ISO 8601 duration hợp lệ",
         "string.length": "{{#label}} phải dài {{#limit}} ký tự",
-        "string.lowercase": "{{#label}} chỉ chứ các ký tự in thường",
+        "string.lowercase": "{{#label}} chỉ chứa các ký tự in thường",
+        "string.uppercase": "{{#label}} chỉ chứa các ký tự in hoa",
         "string.max": "{{#label}} phải nhỏ hơn hoặc bằng {{#limit}} ký tự",
         "string.min": "{{#label}} phải lớn hơn hoặc bằng {{#limit}} ký tự",
-        "string.normalize": "{{#label}} phải đư {ợc chuẩn hoá unicode ở dạng {#form}} form",
+        "string.normalize": "{{#label}} phải được chuẩn hoá unicode ở dạng {#form}} form",
         "string.token": "{{#label}} phải chứa các ký tự chỗ số và dấu gạch dưới",
         "string.pattern.base": "{{#label}} với giá trị là {:[.]} không khớp với pattern bắt buộc: {{#regex}}",
         "string.pattern.name": "{{#label}} với giá trị là {:[.]} không khớp với {{#name}} pattern",
@@ -30,7 +31,6 @@ const StringVnLang = {
         "string.uri": "{{#label}} phải là uri phù hợp",
         "string.uriCustomScheme": "{{#label}} phải là một uri phù với scheme khớp với {{#scheme}} pattern",
         "string.uriRelativeOnly": "{{#label}} phải là relative uri hợp lệ",
-        "string.uppercase": "{{#label}} chỉ chứ các ký tự in hoa",
 };
 
 const NumberVnLang = {
