@@ -123,4 +123,40 @@ const FunctionVnLang = {
         "function.minArity": "{{#label}} phải có arity (số hàng của function) lớn hơn hoặc bằng {{#n}}",
 };
 
-export { StringVnLang, NumberVnLang, AnyVnLang, AlternativesVnLang, ArrayVnLang, BinaryVnLang, BooleanVnLang, DataVnLang, FunctionVnLang };
+const KeysVnLang = {
+        "object.and": "{{#label}} chứa {{#presentWithLabels}} hiện mà không có sự hiện diện bắt buộc của {{#missingWithLabels}}",
+        "object.assert":
+                '{{#label}} không hợp lệ vì {if(#subject.key, `"` + #subject.key + `" failed to ` + (#message || "pass the assertion test"), #message || "the assertion failed")}',
+        "object.base": "{{#label}} phải là kiểu {{#type}}",
+        "object.instance": "{{#label}} phải là một phiên bản của {{:#type}}",
+        "object.length": '{{#label}} phải có {{#limit}} key{if(#limit == 1, "", "s")}',
+        "object.max": '{{#label}} phải nhỏ hơn hoặc bằng {{#limit}} key{if(#limit == 1, "", "s")}',
+        "object.min": '{{#label}} phải có ít nhất {{#limit}} key{if(#limit == 1, "", "s")}',
+        "object.missing": "{{#label}} phải chứa ít nhất một trong {{#peersWithLabels}}",
+        "object.nand": "{{:#mainWithLabel}} không được tồn tại đồng thời với {{#peersWithLabels}}",
+        "object.oxor": "{{#label}} chứa xung đột giữa các peers tuỳ chọn {{#peersWithLabels}}",
+        "object.pattern.match": "{{#label}} keys không khớp với yêu cầu của pattern",
+        "object.refType": "{{#label}} phải là một tham chiếu Joi ",
+        "object.regex": "{{#label}} phải là một đối tượng RegExp",
+        "object.rename.multiple":
+                "{{#label}} không thể đổi tên {{:#from}} bởi vì nhiều đổi tên đã bị vô hiệu hoá và một key khác đã được đổi tên thành {{:#to}}",
+        "object.rename.override": "{{#label}} không thể đổi tên {{:#from}} bởi vì tính năng ghi đè đã bị vô hiệu hoá và {{:#to}} đang tồn tại",
+        "object.schema": "{{#label}} phải là một lượt đồ Joi thuộc loại {{#type}}",
+        "object.unknown": "{{#label}} không được cho phép",
+        "object.with": "{{:#mainWithLabel}} thiếu peer bắt buộc {{:#peerWithLabel}}",
+        "object.without": "{{:#mainWithLabel}} xung độ với peer bị cấm {{:#peerWithLabel}}",
+        "object.xor": "{{#label}} chứa xung đột giữa các peers độc quyền {{#peersWithLabels}}",
+};
+
+export {
+        StringVnLang,
+        NumberVnLang,
+        AnyVnLang,
+        AlternativesVnLang,
+        ArrayVnLang,
+        BinaryVnLang,
+        BooleanVnLang,
+        DataVnLang,
+        FunctionVnLang,
+        KeysVnLang,
+};
