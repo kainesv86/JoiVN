@@ -98,7 +98,22 @@ const BinaryVnLang = {
 };
 
 const BooleanVnLang = {
-        "boolean.base": "{{#label}} must be a boolean",
+        "boolean.base": "{{#label}} phải là một boolean",
 };
 
-export { StringVnLang, NumberVnLang, AnyVnLang, AlternativesVnLang, ArrayVnLang, BinaryVnLang };
+const DataVnLang = {
+        "date.base": "{{#label}} phải là một ngày hợp lệ",
+        "date.format": '{{#label}} phải ở dạng {msg("date.format." + #format) || #format}',
+        "date.greater": "{{#label}} phải lớn hơn {{:#limit}}",
+        "date.less": "{{#label}} phải nhỏ hơn {{:#limit}}",
+        "date.max": "{{#label}} phải bé hơn hoặc bằng {{:#limit}}",
+        "date.min": "{{#label}} phải lớn hơn hoặc bằng {{:#limit}}",
+
+        // Messages used in date.format
+
+        "date.format.iso": "ISO 8601 date",
+        "date.format.javascript": "Dấu thời gian hoặc số mili giây",
+        "date.format.unix": "Dấu thời gian hoặc số giây",
+};
+
+export { StringVnLang, NumberVnLang, AnyVnLang, AlternativesVnLang, ArrayVnLang, BinaryVnLang, BooleanVnLang };
