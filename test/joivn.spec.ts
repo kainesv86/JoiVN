@@ -413,10 +413,10 @@ describe("JoiVn", () => {
                         expect(error).toBeDefined();
                 });
 
-                it("Pass invalid", () => {
+                it("Pass only", () => {
                         let test = schema;
-                        test = test.invalid("a", "A");
-                        const { error } = test.validate("a");
+                        test = test.only().valid(1, 2, 3);
+                        const { error } = test.validate(4);
                         console.log(error.details[0].message);
                         expect(error).toBeDefined();
                 });
