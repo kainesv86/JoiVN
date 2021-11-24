@@ -1,4 +1,5 @@
 import * as joi from "joi";
+import { object } from "joi";
 import {
         StringVnLang,
         AlternativesVnLang,
@@ -425,6 +426,107 @@ describe("JoiVn", () => {
                         let test = schema;
                         test = test.only().valid(1, 2, 3);
                         const { error } = test.validate(4);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass ref", () => {
+                        let test = joi
+                                .object({
+                                        a: joi.string(),
+                                        b: joi.any().valid(
+                                                joi.ref("a", {
+                                                        adjust: (value) => value * 2,
+                                                })
+                                        ),
+                                })
+                                .messages(AnyVnLang);
+                        const { error } = test.validate({ a: "a", b: "2" });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass required", () => {
+                        let test = joi.object({
+                                a: joi.any().required().messages(AnyVnLang),
+                                b: joi.any(),
+                        });
+
+                        const { error } = test.validate({ b: "Hello" });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+        });
+
+        describe("Alternatives VN Lang", () => {
+                it("Pass conditional", () => {
+                        const test = joi
+                                .alternatives()
+                                .conditional(joi.object({ b: 5 }).unknown(), {
+                                        then: joi.object({
+                                                a: joi.string(),
+                                                b: joi.any(),
+                                        }),
+                                        otherwise: joi.object({
+                                                a: joi.number(),
+                                                b: joi.any(),
+                                        }),
+                                })
+                                .messages(AlternativesVnLang);
+
+                        const { error } = test.validate({ b: 6, a: "5asdas" });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass any", () => {
+                        const test = joi
+                                .alternatives()
+                                .try(
+                                        joi.object({
+                                                a: joi.string(),
+                                        }),
+                                        joi.object({
+                                                b: joi.string(),
+                                        }),
+                                        joi.object({
+                                                c: joi.string(),
+                                        })
+                                )
+                                .match("one")
+                                .messages(AlternativesVnLang);
+
+                        const { error } = test.validate({ a: 1 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass full", () => {
+                        const test = joi
+                                .alternatives()
+                                .try(
+                                        joi.object({
+                                                a: joi.string(),
+                                        }),
+                                        joi.object({
+                                                b: joi.string(),
+                                        }),
+                                        joi.object({
+                                                c: joi.string(),
+                                        })
+                                )
+                                .match("all")
+                                .messages(AlternativesVnLang);
+
+                        const { error } = test.validate({ a: "x" });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass try", () => {
+                        const test = joi.alternatives().try(joi.number(), joi.string()).messages(AlternativesVnLang);
+
+                        const { error } = test.validate(true);
                         console.log(error.details[0].message);
                         expect(error).toBeDefined();
                 });
