@@ -340,4 +340,93 @@ describe("JoiVn", () => {
                         expect(error).toBeDefined();
                 });
         });
+        describe("Any VN lang", () => {
+                const schema = joi.any().messages(AnyVnLang);
+
+                it("Pass custom", () => {
+                        let test = schema;
+                        const method = (value, helpers) => {
+                                // Throw an error (will be replaced with 'any.custom' error)
+                                if (value === "1") {
+                                        throw new Error("không được là 1");
+                                }
+
+                                // Replace value with a new value
+                                if (value === "2") {
+                                        return "3";
+                                }
+
+                                // Use error to return an existing error code
+                                if (value === "4") {
+                                        return helpers.error("any.invalid");
+                                }
+
+                                // Override value with undefined to unset
+                                if (value === "5") {
+                                        return undefined;
+                                }
+                        };
+                        test = test.custom(method, "custom validation");
+                        const { error, value } = test.validate("1");
+                        console.log(value);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass default", () => {
+                        const method = (parent, helpers) => {
+                                throw new Error(parent.fName + " - " + parent.lName);
+                        };
+                        const test = joi.object({
+                                fName: joi.string(),
+                                lName: joi.string(),
+                                fullname: joi.any().default(method).messages(AnyVnLang),
+                        });
+                        const { error, value } = test.validate({ fname: "Kainé", lName: "Phạm" });
+
+                        console.log(value);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                // it("Pass failover", () => {
+                //         const method = (parent, helpers) => {
+                //                 throw new Error(parent.fName + " - " + parent.lName);
+                //         };
+                //         const test = joi.object({
+                //                 fName: joi.string(),
+                //                 lName: joi.string(),
+                //                 fullname: joi.any().default(method).messages(AnyVnLang),
+                //         });
+                //         const { error, value } = test.validate({ fname: "Kainé", lName: "Phạm" });
+
+                //         console.log(value);
+                //         console.log(error.details[0].message);
+                //         expect(error).toBeDefined();
+                // });
+
+                it("Pass invalid", () => {
+                        let test = schema;
+                        test = test.invalid("a", "A");
+                        const { error } = test.validate("a");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass invalid", () => {
+                        let test = schema;
+                        test = test.invalid("a", "A");
+                        const { error } = test.validate("a");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass only", () => {
+                        let test = schema;
+                        test = test.only().valid(1, 2, 3);
+                        const { error } = test.validate(4);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+        });
 });

@@ -56,7 +56,7 @@ const AnyVnLang = {
         "any.default": "{{#label}} đã xảy ra lỗi khi chạy default method",
         "any.failover": "{{#label}} đã xảy ra lỗi khi chạy failover method",
         "any.invalid": "{{#label}} chứa giá trị không hợp lệ",
-        "any.only": '{{#label}} phải {if(#valids.length == 1, "", "one of ")}{{#valids}}',
+        "any.only": '{{#label}} phải {if(#valids.length == 1, "", "một trong ")}{{#valids}}',
         "any.ref": "{{#label}} {{#arg}} references {{:#ref}} which {{#reason}}",
         "any.required": "{{#label}} là bắt buộc",
         "any.unknown": "{{#label}} không được phép",
