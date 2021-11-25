@@ -1,5 +1,5 @@
 import * as joi from "joi";
-import { object } from "joi";
+import { boolean, object, string } from "joi";
 import {
         StringVnLang,
         AlternativesVnLang,
@@ -529,6 +529,95 @@ describe("JoiVn", () => {
                         const { error } = test.validate(true);
                         console.log(error.details[0].message);
                         expect(error).toBeDefined();
+                });
+        });
+
+        describe("Array VN Lang", () => {
+                const schema = joi.array().messages(ArrayVnLang);
+
+                it("Pass base", () => {
+                        const { error } = schema.validate("Hello");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                // it("Pass has known", () => {
+                //         let test = schema;
+                //         test = test
+                //                 .items(
+                //                         joi.object({
+                //                                 a: joi.string(),
+                //                                 b: joi.number(),
+                //                                 c: joi.number(),
+                //                         })
+                //                 )
+                //                 .has(joi.object({ a: joi.string(), b: joi.number(), c: joi.boolean() }));
+                //         const { error } = test.validate([{ a: "b", b: 1, c: 1 }]);
+                //         console.log(error.details[0].message);
+                //         expect(error).toBeDefined();
+                // });
+
+                it("Pass has Unknown", () => {
+                        let test = schema;
+                        test = test
+                                .items(
+                                        joi.object({
+                                                a: joi.string(),
+                                                b: joi.number(),
+                                        })
+                                )
+                                .has(joi.object({ a: joi.string().valid("a"), b: joi.number() }));
+                        const { error } = test.validate([{ a: "b", b: 1 }]);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass length", () => {
+                        let test = schema;
+                        test = test.length(5);
+                        const { error } = test.validate([{}, {}, {}, {}, {}, {}]);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass max", () => {
+                        let test = schema;
+                        test = test.max(5);
+                        const { error } = test.validate([{}, {}, {}, {}, {}, {}]);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass min", () => {
+                        let test = schema;
+                        test = test.min(5);
+                        const { error } = test.validate([{}, {}, {}, {}]);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass orderedLength", () => {
+                        let test = schema;
+                        test = test.ordered(joi.string().required(), joi.number().required());
+                        const { error } = test.validate(["a", 2, "b", 3, "a"]);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass includesRequiredUnknowns", () => {
+                        let test = schema;
+                        test = test.ordered(joi.string().required()).items(joi.number().required());
+                        const { error } = test.validate(["a"]);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass sort", () => {
+                        let test = schema;
+                        test = test.sort();
+                        const { value } = test.validate([1, 5, 2, 76, 3, 7]);
+                        console.log(value);
+                        expect(value).toBe([1, 2, 3, 5, 7, 76]);
                 });
         });
 });
