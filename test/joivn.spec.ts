@@ -1,5 +1,4 @@
 import * as joi from "joi";
-import { boolean, object, string } from "joi";
 import {
         StringVnLang,
         AlternativesVnLang,
@@ -7,7 +6,7 @@ import {
         ArrayVnLang,
         BinaryVnLang,
         BooleanVnLang,
-        DataVnLang,
+        DateVnLang,
         FunctionVnLang,
         KeysVnLang,
         NumberVnLang,
@@ -640,6 +639,115 @@ describe("JoiVn", () => {
                         let test = schema;
                         test = test.unique();
                         const { error } = test.validate([1, 2, 3, 1]);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+        });
+
+        describe("Base VN Lang", () => {
+                const schema = joi.binary().messages(BinaryVnLang);
+                it("Pass base", () => {
+                        let test = schema;
+                        const { error } = test.validate(5165565161);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass length", () => {
+                        let test = schema;
+                        test = test.length(5);
+                        const { error } = test.validate("101011");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass max", () => {
+                        let test = schema;
+                        test = test.max(5);
+                        const { error } = test.validate("101011");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass min", () => {
+                        let test = schema;
+                        test = test.min(5);
+                        const { error } = test.validate("1011");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+        });
+
+        describe("Boolean VN Lang", () => {
+                it("Pass base", () => {
+                        const schema = joi.boolean().messages(BooleanVnLang);
+                        const { error } = schema.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+        });
+
+        describe("Date VN Lang", () => {
+                const schema = joi.date().messages(DateVnLang);
+                it("Pass base", () => {
+                        const test = schema;
+                        const { error } = test.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass min", () => {
+                        let test = schema;
+                        test = test.min("1999/6/6");
+                        const { error } = test.validate("1999/6/4");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass max", () => {
+                        let test = schema;
+                        test = test.max("1999/6/6");
+                        const { error } = test.validate("1999/6/8");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass greater", () => {
+                        let test = schema;
+                        test = test.greater("1999/6/6");
+                        const { error } = test.validate("1999/6/6");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass less", () => {
+                        let test = schema;
+                        test = test.less("1999/6/6");
+                        const { error } = test.validate("1999/6/6");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass iso", () => {
+                        let test = schema;
+                        test = test.iso();
+                        const { error } = test.validate("10-2001-31");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass timestamp javascript", () => {
+                        let test = schema;
+                        test = test.timestamp("javascript");
+                        const { error } = test.validate("Feb Wed 05 2020 11:18:21 GMT+0000");
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass timestamp unix", () => {
+                        let test = schema;
+                        test = test.timestamp("unix");
+                        const { error } = test.validate("Feb Wed 05 2020 11:18:21 GMT+0000");
                         console.log(error.details[0].message);
                         expect(error).toBeDefined();
                 });

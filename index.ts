@@ -101,7 +101,7 @@ const BooleanVnLang = {
         "boolean.base": "{{#label}} phải là một boolean",
 };
 
-const DataVnLang = {
+const DateVnLang = {
         "date.base": "{{#label}} phải là một ngày hợp lệ",
         "date.format": '{{#label}} phải ở dạng {msg("date.format." + #format) || #format}',
         "date.greater": "{{#label}} phải lớn hơn {{:#limit}}",
@@ -163,7 +163,7 @@ export {
         ArrayVnLang,
         BinaryVnLang,
         BooleanVnLang,
-        DataVnLang,
+        DateVnLang,
         FunctionVnLang,
         KeysVnLang,
         ObjectVnLang,
