@@ -752,4 +752,119 @@ describe("JoiVn", () => {
                         expect(error).toBeDefined();
                 });
         });
+
+        // describe("Function VN Lang", () => {
+        //         const schema = joi.func();
+        //         it("Pass arity", () => {
+        //                 let test = schema;
+        //                 test.arity(2);
+        //                 const { error } = test.validate(() => {
+        //                         const a = 2;
+        //                         const b = 3 + a;
+        //                         const c = 4 + b + a;
+        //                         return a + b + c;
+        //                 });
+        //                 console.log(error.details[0].message);
+        //                 expect(error).toBeDefined();
+        //         });
+        // })
+        describe("Object VN Lang", () => {
+                const schema = joi.object().messages(ObjectVnLang);
+                it("Pass base", () => {
+                        let test = schema;
+                        const { error } = test.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass and", () => {
+                        let test = schema;
+                        test = test.keys({ a: joi.string(), b: joi.number() }).and("a", "b");
+                        const { error } = test.validate({ a: "Hello" });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass assert", () => {
+                        let test = schema;
+                        test = test
+                                .keys({ a: { b: joi.string(), c: joi.number() }, d: { e: joi.number() } })
+                                .assert("d.e", joi.ref("a.c"), "equal to a.c");
+                        const { error } = test.validate({ a: { b: "hello", c: "2" }, d: { e: "2" } });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass length", () => {
+                        let test = schema;
+                        test = test.length(2);
+                        const { error } = test.validate({ a: 1, b: 2, c: 3 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass min", () => {
+                        let test = schema;
+                        test = test.min(4);
+                        const { error } = test.validate({ a: 1, b: 2, c: 3 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass max", () => {
+                        let test = schema;
+                        test = test.max(2);
+                        const { error } = test.validate({ a: 1, b: 2, c: 3 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass missing", () => {
+                        let test = schema;
+                        test = test.keys({ a: joi.any(), b: joi.any(), c: joi.any() }).or("a", "b");
+                        const { error } = test.validate({ c: 9 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass NAND", () => {
+                        let test = schema;
+                        test = test.keys({ a: joi.any(), b: joi.any(), c: joi.any() }).nand("a", "b");
+                        const { error } = test.validate({ a: 1, b: 1, c: 1 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass NAND", () => {
+                        let test = schema;
+                        test = test.keys({ a: joi.any(), b: joi.any(), c: joi.any() }).nand("a", "b");
+                        const { error } = test.validate({ a: 1, b: 1, c: 1 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass OXOR", () => {
+                        let test = schema;
+                        test = test.keys({ a: joi.any(), b: joi.any(), c: joi.any() }).oxor("a", "b");
+                        const { error } = test.validate({ a: 1, b: 1, c: 1 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass with", () => {
+                        let test = schema;
+                        test = test.keys({ a: joi.any(), b: joi.any() }).with("a", "b");
+                        const { error } = test.validate({ a: 1 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass without", () => {
+                        let test = schema;
+                        test = test.keys({ a: joi.any(), b: joi.any() }).without("a", ["b"]);
+                        const { error } = test.validate({ a: 1, b: 2 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+        });
 });
