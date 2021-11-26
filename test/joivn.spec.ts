@@ -851,6 +851,14 @@ describe("JoiVn", () => {
                         expect(error).toBeDefined();
                 });
 
+                it("Pass XOR", () => {
+                        let test = schema;
+                        test = test.keys({ a: joi.any(), b: joi.any(), c: joi.any() }).xor("a", "b");
+                        const { error } = test.validate({ a: 1, b: 1, c: 1 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
                 it("Pass with", () => {
                         let test = schema;
                         test = test.keys({ a: joi.any(), b: joi.any() }).with("a", "b");
