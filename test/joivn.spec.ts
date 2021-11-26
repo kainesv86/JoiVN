@@ -612,12 +612,36 @@ describe("JoiVn", () => {
                         expect(error).toBeDefined();
                 });
 
-                it("Pass sort", () => {
+                // it("Pass sort mismatching", () => {
+                //         let test = schema;
+                //         test = test.sort();
+                //         const { error } = test.validate([4, 5, 2, 76, 3, 7]);
+                //         console.log(error.details[0].message);
+                //         expect(error).toBeDefined();
+                // });
+
+                it("Pass sort mismatching", () => {
                         let test = schema;
                         test = test.sort();
-                        const { value } = test.validate([1, 5, 2, 76, 3, 7]);
-                        console.log(value);
-                        expect(value).toBe([1, 2, 3, 5, 7, 76]);
+                        const { error } = test.validate(["4", 5, 2, "76", 3, 7]);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass sparse", () => {
+                        let test = schema;
+                        test = test.sparse(false);
+                        const { error } = test.validate([1, , 2, , 3]);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass unique", () => {
+                        let test = schema;
+                        test = test.unique();
+                        const { error } = test.validate([1, 2, 3, 1]);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
                 });
         });
 });
