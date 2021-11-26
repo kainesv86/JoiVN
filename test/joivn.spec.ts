@@ -1,4 +1,5 @@
 import * as joi from "joi";
+import { symbol } from "joi";
 import {
         StringVnLang,
         AlternativesVnLang,
@@ -871,6 +872,16 @@ describe("JoiVn", () => {
                         let test = schema;
                         test = test.keys({ a: joi.any(), b: joi.any() }).without("a", ["b"]);
                         const { error } = test.validate({ a: 1, b: 2 });
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+        });
+        describe("Symbol VN Lang", () => {
+                const schema = joi.symbol().messages(SymbolVnLang);
+
+                it("Pass base", () => {
+                        let test = schema;
+                        const { error } = test.validate(null);
                         console.log(error.details[0].message);
                         expect(error).toBeDefined();
                 });
