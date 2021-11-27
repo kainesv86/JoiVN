@@ -155,7 +155,23 @@ const SymbolVnLang = {
 
 const ObjectVnLang = { ...KeysVnLang };
 
+const JoiVnLang = {
+        ...StringVnLang,
+        ...NumberVnLang,
+        ...AnyVnLang,
+        ...AlternativesVnLang,
+        ...ArrayVnLang,
+        ...BinaryVnLang,
+        ...BooleanVnLang,
+        ...DateVnLang,
+        ...FunctionVnLang,
+        ...KeysVnLang,
+        ...ObjectVnLang,
+        ...SymbolVnLang,
+};
+
 export {
+        JoiVnLang,
         StringVnLang,
         NumberVnLang,
         AnyVnLang,
