@@ -170,8 +170,9 @@ const JoiVnLang = {
         ...SymbolVnLang,
 };
 
+export default JoiVnLang;
+
 export {
-        JoiVnLang,
         StringVnLang,
         NumberVnLang,
         AnyVnLang,

@@ -1,6 +1,5 @@
 import * as joi from "joi";
-import { symbol } from "joi";
-import {
+import JoiVnLang, {
         StringVnLang,
         AlternativesVnLang,
         AnyVnLang,
@@ -13,12 +12,12 @@ import {
         NumberVnLang,
         ObjectVnLang,
         SymbolVnLang,
-        JoiVnLang,
 } from "../index";
 
 describe("JoiVn", () => {
         describe("String VN lang", () => {
                 const schema = joi.string().messages(StringVnLang);
+
                 it("Pass string.base", () => {
                         const test = schema;
                         const { error } = test.validate(1223);
