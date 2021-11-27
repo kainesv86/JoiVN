@@ -13,6 +13,7 @@ import {
         NumberVnLang,
         ObjectVnLang,
         SymbolVnLang,
+        JoiVnLang,
 } from "../index";
 
 describe("JoiVn", () => {
@@ -876,12 +877,85 @@ describe("JoiVn", () => {
                         expect(error).toBeDefined();
                 });
         });
+
         describe("Symbol VN Lang", () => {
                 const schema = joi.symbol().messages(SymbolVnLang);
 
                 it("Pass base", () => {
                         let test = schema;
                         const { error } = test.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+        });
+
+        describe("Joi Vn Lang", () => {
+                it("Pass String", () => {
+                        const schema = joi.string().messages(JoiVnLang);
+                        const { error } = schema.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass Number", () => {
+                        const schema = joi.number().messages(JoiVnLang);
+                        const { error } = schema.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass Alternatives", () => {
+                        const schema = joi.alternatives().messages(JoiVnLang);
+                        const { error } = schema.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass Array", () => {
+                        const schema = joi.array().messages(JoiVnLang);
+                        const { error } = schema.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass Binary", () => {
+                        const schema = joi.binary().messages(JoiVnLang);
+                        const { error } = schema.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass Boolean", () => {
+                        const schema = joi.boolean().messages(JoiVnLang);
+                        const { error } = schema.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass Date", () => {
+                        const schema = joi.date().messages(JoiVnLang);
+                        const { error } = schema.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass Function", () => {
+                        const schema = joi.func().messages(JoiVnLang);
+                        const { error } = schema.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass Object", () => {
+                        const schema = joi.object().messages(JoiVnLang);
+                        const { error } = schema.validate(null);
+                        console.log(error.details[0].message);
+                        expect(error).toBeDefined();
+                });
+
+                it("Pass Symbol", () => {
+                        const schema = joi.symbol().messages(JoiVnLang);
+                        const { error } = schema.validate(null);
                         console.log(error.details[0].message);
                         expect(error).toBeDefined();
                 });
