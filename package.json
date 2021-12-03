@@ -2,7 +2,11 @@
         "name": "joi-vn-lang",
         "version": "1.0.0",
         "description": "Set default language of Joi validator",
-        "main": "index.js",
+        "main": "lib/index.js",
+        "types": "lib/index.d.ts",
+        "files": [
+                "lib/**/*"
+        ],
         "license": "MIT",
         "devDependencies": {
                 "@types/jest": "^27.0.3",
