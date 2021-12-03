@@ -1,6 +1,6 @@
 {
         "name": "joi-vn-lang",
-        "version": "1.0.7",
+        "version": "1.0.8",
         "description": "Set default language of Joi validator",
         "main": "lib/index.js",
         "license": "MIT",
@@ -17,7 +17,8 @@
         "keywords": [
                 "joi",
                 "joi language",
-                "joi VN"
+                "joi VN",
+                "joi-vn-lang"
         ],
         "scripts": {
                 "start:dev": "nodemon ./index.ts",

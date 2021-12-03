@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SymbolVnLang = exports.ObjectVnLang = exports.KeysVnLang = exports.FunctionVnLang = exports.DateVnLang = exports.BooleanVnLang = exports.BinaryVnLang = exports.ArrayVnLang = exports.AlternativesVnLang = exports.AnyVnLang = exports.NumberVnLang = exports.StringVnLang = void 0;
 // ======================= String  =======================
 const StringVnLang = {
     "string.alphanum": "{{#label}} chỉ chứ các ký tự là chữ số",
@@ -34,6 +35,7 @@ const StringVnLang = {
     "string.uriCustomScheme": "{{#label}} phải là một uri phù với scheme khớp với {{#scheme}} pattern",
     "string.uriRelativeOnly": "{{#label}} phải là relative uri hợp lệ",
 };
+exports.StringVnLang = StringVnLang;
 const NumberVnLang = {
     "number.base": "{{#label}} phải là một con số",
     "number.greater": "{{#label}} phải lớn hơn {{#limit}}",
@@ -49,6 +51,7 @@ const NumberVnLang = {
     "number.precision": "{{#label}} không được nhiều {{#limit}} chữ số thập phân",
     "number.unsafe": "{{#label}} phải là safe number of Javascript",
 };
+exports.NumberVnLang = NumberVnLang;
 // ======================= Any =======================
 const AnyVnLang = {
     "any.custom": "{{#label}} xác thực tuỳ chỉnh không thành công vì {{#error.message}}",
@@ -60,6 +63,7 @@ const AnyVnLang = {
     "any.required": "{{#label}} là bắt buộc",
     "any.unknown": "{{#label}} không được phép",
 };
+exports.AnyVnLang = AnyVnLang;
 const AlternativesVnLang = {
     "alternatives.all": "{{#label}} không khớp với tất cả các kiểu bắt buộc",
     "alternatives.any": "{{#label}} không khớp với bất kỳ kiểu cho phép",
@@ -67,6 +71,7 @@ const AlternativesVnLang = {
     "alternatives.one": "{{#label}} khớp nhiều hơn một loại cho phép",
     "alternatives.types": "{{#label}} phải là một trong {{#types}}",
 };
+exports.AlternativesVnLang = AlternativesVnLang;
 const ArrayVnLang = {
     "array.base": "{{#label}} phải là một array",
     "array.excludes": "{{#label}} chứa một giá trị bị loại trừ",
@@ -86,15 +91,18 @@ const ArrayVnLang = {
     "array.sparse": "{{#label}} không được là một array thưa thớt",
     "array.unique": "{{#label}} chứa giá trị trùng lặp",
 };
+exports.ArrayVnLang = ArrayVnLang;
 const BinaryVnLang = {
     "binary.base": "{{#label}} phải là một buffer hoặc một string",
     "binary.length": "{{#label}} phải là {{#limit}} bytes",
     "binary.max": "{{#label}} phải ít hơn hoặc bằng {{#limit}} bytes",
     "binary.min": "{{#label}} phải ít nhất {{#limit}} bytes",
 };
+exports.BinaryVnLang = BinaryVnLang;
 const BooleanVnLang = {
     "boolean.base": "{{#label}} phải là một boolean",
 };
+exports.BooleanVnLang = BooleanVnLang;
 const DateVnLang = {
     "date.base": "{{#label}} phải là một ngày hợp lệ",
     "date.format": '{{#label}} phải ở dạng {msg("date.format." + #format) || #format}',
@@ -107,12 +115,14 @@ const DateVnLang = {
     "date.format.javascript": "Dấu thời gian hoặc số mili giây",
     "date.format.unix": "Dấu thời gian hoặc số giây",
 };
+exports.DateVnLang = DateVnLang;
 const FunctionVnLang = {
     "function.arity": "{{#label}} phải có {{#n}} arity (số hàng của function)",
     "function.class": "{{#label}} phải là một class",
     "function.maxArity": "{{#label}} phải có arity (số hàng của function) nhỏ hơn hoặc bằng {{#n}}",
     "function.minArity": "{{#label}} phải có arity (số hàng của function) lớn hơn hoặc bằng {{#n}}",
 };
+exports.FunctionVnLang = FunctionVnLang;
 const KeysVnLang = {
     "object.and": "{{#label}} chứa {{#presentWithLabels}} hiện mà không có sự hiện diện bắt buộc của {{#missingWithLabels}}",
     "object.assert": '{{#label}} không hợp lệ vì {if(#subject.key, `"` + #subject.key + `" failed to ` + (#message || "pass the assertion test"), #message || "the assertion failed")}',
@@ -135,10 +145,13 @@ const KeysVnLang = {
     "object.without": "{{:#mainWithLabel}} xung độ với peer bị cấm {{:#peerWithLabel}}",
     "object.xor": "{{#label}} chứa xung đột giữa các peers độc quyền {{#peersWithLabels}}",
 };
+exports.KeysVnLang = KeysVnLang;
 const SymbolVnLang = {
     "symbol.base": "{{#label}} phải là symbol",
     "symbol.map": "{{#label}} phải là một trong {{#map}}",
 };
+exports.SymbolVnLang = SymbolVnLang;
 const ObjectVnLang = Object.assign({}, KeysVnLang);
+exports.ObjectVnLang = ObjectVnLang;
 const JoiVnLang = Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, StringVnLang), NumberVnLang), AnyVnLang), AlternativesVnLang), ArrayVnLang), BinaryVnLang), BooleanVnLang), DateVnLang), FunctionVnLang), KeysVnLang), ObjectVnLang), SymbolVnLang);
 exports.default = JoiVnLang;
