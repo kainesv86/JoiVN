@@ -1,12 +1,8 @@
 {
         "name": "joi-vn-lang",
-        "version": "1.0.0",
+        "version": "1.0.6",
         "description": "Set default language of Joi validator",
         "main": "lib/index.js",
-        "types": "lib/index.d.ts",
-        "files": [
-                "lib/**/*"
-        ],
         "license": "MIT",
         "devDependencies": {
                 "@types/jest": "^27.0.3",
@@ -35,6 +31,6 @@
                 "url": "https://github.com/kainesv86"
         },
         "dependencies": {
-                "joi-vn-lang": "^1.0.0"
+                "joi-vn-lang": "^1.0.6"
         }
 }

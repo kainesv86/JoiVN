@@ -1,4 +1,19 @@
 import * as joi from "joi";
+// import JoiVnLang, {
+//         StringVnLang,
+//         AlternativesVnLang,
+//         AnyVnLang,
+//         ArrayVnLang,
+//         BinaryVnLang,
+//         BooleanVnLang,
+//         DateVnLang,
+//         FunctionVnLang,
+//         KeysVnLang,
+//         NumberVnLang,
+//         ObjectVnLang,
+//         SymbolVnLang,
+// } from "../index";
+
 import JoiVnLang, {
         StringVnLang,
         AlternativesVnLang,
@@ -12,7 +27,7 @@ import JoiVnLang, {
         NumberVnLang,
         ObjectVnLang,
         SymbolVnLang,
-} from "../index";
+} from "joi-vn-lang";
 
 describe("JoiVn", () => {
         describe("String VN lang", () => {

@@ -2150,6 +2150,20 @@ joi-vn-lang@^1.0.0:
   resolved "https://registry.yarnpkg.com/joi-vn-lang/-/joi-vn-lang-1.0.0.tgz#f9c3eb916ddf6cfedc0d2fd363fe5278095cc02e"
   integrity sha512-NNXutn9oqS9yd8QhkMsZoXV7A1BfI5IXzqsU79OUrGbFFVLsXGT7xJLuh2ah77rJvEmZfxDdp0wC+UKifESbig==
 
+joi-vn-lang@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/joi-vn-lang/-/joi-vn-lang-1.0.2.tgz#ea259637cad14c58a21b6e108bd803ba1be481d0"
+  integrity sha512-2Xt7V53LeXV/X6KEbmibg7I+MbIg0XimOWSqny3YG6EvUazR/Uit2eEiw030vLia/T6iQubqv3hSoScudYaWHA==
+  dependencies:
+    joi-vn-lang "^1.0.0"
+
+joi-vn-lang@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/joi-vn-lang/-/joi-vn-lang-1.0.6.tgz#74cb853bd2aeb32a7840cab7da8756298f8ab39e"
+  integrity sha512-gMP6GDALpUOkjCkDq6rs8F6vQQd/a85LFZA61reHyDc3DTCABIE3gqGFgglSHptiiYa+TK6yD/J+mIDhh8xfTA==
+  dependencies:
+    joi-vn-lang "^1.0.2"
+
 joi@*, joi@^17.4.2:
   version "17.4.2"
   resolved "https://registry.yarnpkg.com/joi/-/joi-17.4.2.tgz#02f4eb5cf88e515e614830239379dcbbe28ce7f7"
