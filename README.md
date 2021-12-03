@@ -18,7 +18,6 @@ yarn add joi-vn-lang
 
 ## Joi extend language
 
-- JoiVnLang: Have all Vietnamese message of variables
 - StringVnLang
 - AlternativesVnLang
 - AnyVnLang
@@ -38,7 +37,7 @@ yarn add joi-vn-lang
 const joi = require("joi");
 const JoiVnLang = require("joi-vn-lang");
 
-const schema = joi.string().messages(JoiVnLang);
+const schema = joi.string().messages(JoiVnLang.StringVnLang);
 const { error } = schema.validate(null);
-console.log(error.details[0].message);
+console.log(error.details[0].message); //"value" phải là biến string
 ```

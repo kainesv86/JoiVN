@@ -22,7 +22,7 @@
         "scripts": {
                 "start:dev": "nodemon ./index.ts",
                 "test": "jest",
-                "build": "rm -r lib  && tsc",
+                "build": "rm -r lib && tsc",
                 "publish": " yarn run build && npm publish"
         },
         "author": {
