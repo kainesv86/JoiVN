@@ -171,3 +171,18 @@ const JoiVnLang = {
 };
 
 export default JoiVnLang;
+
+export {
+        StringVnLang,
+        NumberVnLang,
+        AnyVnLang,
+        AlternativesVnLang,
+        ArrayVnLang,
+        BinaryVnLang,
+        BooleanVnLang,
+        DateVnLang,
+        FunctionVnLang,
+        KeysVnLang,
+        ObjectVnLang,
+        SymbolVnLang,
+};

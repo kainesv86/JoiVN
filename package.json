@@ -1,6 +1,6 @@
 {
         "name": "joi-vn-lang",
-        "version": "1.0.6",
+        "version": "1.0.7",
         "description": "Set default language of Joi validator",
         "main": "lib/index.js",
         "license": "MIT",
