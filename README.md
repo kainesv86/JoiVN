@@ -31,7 +31,7 @@ yarn add joi-vn-lang
 - ObjectVnLang
 - SymbolVnLang
 
-## Usage
+## Usage Javascript
 
 ```js
 const joi = require("joi");

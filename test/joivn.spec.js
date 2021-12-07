@@ -20,7 +20,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = __importStar(require("joi"));
-const index_1 = __importStar(require("../index"));
 // import JoiVnLang, {
 //         StringVnLang,
 //         AlternativesVnLang,
@@ -34,10 +33,11 @@ const index_1 = __importStar(require("../index"));
 //         NumberVnLang,
 //         ObjectVnLang,
 //         SymbolVnLang,
-// } from "joi-vn-lang";
+// } from "../index";
+const joi_vn_lang_1 = __importStar(require("joi-vn-lang"));
 describe("JoiVn", () => {
     describe("String VN lang", () => {
-        const schema = joi.string().messages(index_1.StringVnLang);
+        const schema = joi.string().messages(joi_vn_lang_1.StringVnLang);
         it("Pass string.base", () => {
             const test = schema;
             const { error } = test.validate(1223);
@@ -231,7 +231,7 @@ describe("JoiVn", () => {
         });
     });
     describe("Number VN lang", () => {
-        const schema = joi.number().messages(index_1.NumberVnLang);
+        const schema = joi.number().messages(joi_vn_lang_1.NumberVnLang);
         it("Pass base", () => {
             let test = schema;
             const { error } = test.validate("122aa3");
@@ -323,7 +323,7 @@ describe("JoiVn", () => {
         });
     });
     describe("Any VN lang", () => {
-        const schema = joi.any().messages(index_1.AnyVnLang);
+        const schema = joi.any().messages(joi_vn_lang_1.AnyVnLang);
         it("Pass custom", () => {
             let test = schema;
             const method = (value, helpers) => {
@@ -357,7 +357,7 @@ describe("JoiVn", () => {
             const test = joi.object({
                 fName: joi.string(),
                 lName: joi.string(),
-                fullname: joi.any().default(method).messages(index_1.AnyVnLang),
+                fullname: joi.any().default(method).messages(joi_vn_lang_1.AnyVnLang),
             });
             const { error, value } = test.validate({ fname: "Kainé", lName: "Phạm" });
             console.log(value);
@@ -407,14 +407,14 @@ describe("JoiVn", () => {
                     adjust: (value) => value * 2,
                 })),
             })
-                .messages(index_1.AnyVnLang);
+                .messages(joi_vn_lang_1.AnyVnLang);
             const { error } = test.validate({ a: "a", b: "2" });
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass required", () => {
             let test = joi.object({
-                a: joi.any().required().messages(index_1.AnyVnLang),
+                a: joi.any().required().messages(joi_vn_lang_1.AnyVnLang),
                 b: joi.any(),
             });
             const { error } = test.validate({ b: "Hello" });
@@ -436,7 +436,7 @@ describe("JoiVn", () => {
                     b: joi.any(),
                 }),
             })
-                .messages(index_1.AlternativesVnLang);
+                .messages(joi_vn_lang_1.AlternativesVnLang);
             const { error } = test.validate({ b: 6, a: "5asdas" });
             console.log(error.details[0].message);
             expect(error).toBeDefined();
@@ -452,7 +452,7 @@ describe("JoiVn", () => {
                 c: joi.string(),
             }))
                 .match("one")
-                .messages(index_1.AlternativesVnLang);
+                .messages(joi_vn_lang_1.AlternativesVnLang);
             const { error } = test.validate({ a: 1 });
             console.log(error.details[0].message);
             expect(error).toBeDefined();
@@ -468,20 +468,20 @@ describe("JoiVn", () => {
                 c: joi.string(),
             }))
                 .match("all")
-                .messages(index_1.AlternativesVnLang);
+                .messages(joi_vn_lang_1.AlternativesVnLang);
             const { error } = test.validate({ a: "x" });
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass try", () => {
-            const test = joi.alternatives().try(joi.number(), joi.string()).messages(index_1.AlternativesVnLang);
+            const test = joi.alternatives().try(joi.number(), joi.string()).messages(joi_vn_lang_1.AlternativesVnLang);
             const { error } = test.validate(true);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
     });
     describe("Array VN Lang", () => {
-        const schema = joi.array().messages(index_1.ArrayVnLang);
+        const schema = joi.array().messages(joi_vn_lang_1.ArrayVnLang);
         it("Pass base", () => {
             const { error } = schema.validate("Hello");
             console.log(error.details[0].message);
@@ -579,7 +579,7 @@ describe("JoiVn", () => {
         });
     });
     describe("Base VN Lang", () => {
-        const schema = joi.binary().messages(index_1.BinaryVnLang);
+        const schema = joi.binary().messages(joi_vn_lang_1.BinaryVnLang);
         it("Pass base", () => {
             let test = schema;
             const { error } = test.validate(5165565161);
@@ -610,14 +610,14 @@ describe("JoiVn", () => {
     });
     describe("Boolean VN Lang", () => {
         it("Pass base", () => {
-            const schema = joi.boolean().messages(index_1.BooleanVnLang);
+            const schema = joi.boolean().messages(joi_vn_lang_1.BooleanVnLang);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
     });
     describe("Date VN Lang", () => {
-        const schema = joi.date().messages(index_1.DateVnLang);
+        const schema = joi.date().messages(joi_vn_lang_1.DateVnLang);
         it("Pass base", () => {
             const test = schema;
             const { error } = test.validate(null);
@@ -690,7 +690,7 @@ describe("JoiVn", () => {
     //         });
     // })
     describe("Object VN Lang", () => {
-        const schema = joi.object().messages(index_1.ObjectVnLang);
+        const schema = joi.object().messages(joi_vn_lang_1.ObjectVnLang);
         it("Pass base", () => {
             let test = schema;
             const { error } = test.validate(null);
@@ -785,7 +785,7 @@ describe("JoiVn", () => {
         });
     });
     describe("Symbol VN Lang", () => {
-        const schema = joi.symbol().messages(index_1.SymbolVnLang);
+        const schema = joi.symbol().messages(joi_vn_lang_1.SymbolVnLang);
         it("Pass base", () => {
             let test = schema;
             const { error } = test.validate(null);
@@ -795,61 +795,61 @@ describe("JoiVn", () => {
     });
     describe("Joi Vn Lang", () => {
         it("Pass String", () => {
-            const schema = joi.string().messages(index_1.default);
+            const schema = joi.string().messages(joi_vn_lang_1.default);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass Number", () => {
-            const schema = joi.number().messages(index_1.default);
+            const schema = joi.number().messages(joi_vn_lang_1.default);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass Alternatives", () => {
-            const schema = joi.alternatives().messages(index_1.default);
+            const schema = joi.alternatives().messages(joi_vn_lang_1.default);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass Array", () => {
-            const schema = joi.array().messages(index_1.default);
+            const schema = joi.array().messages(joi_vn_lang_1.default);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass Binary", () => {
-            const schema = joi.binary().messages(index_1.default);
+            const schema = joi.binary().messages(joi_vn_lang_1.default);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass Boolean", () => {
-            const schema = joi.boolean().messages(index_1.default);
+            const schema = joi.boolean().messages(joi_vn_lang_1.default);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass Date", () => {
-            const schema = joi.date().messages(index_1.default);
+            const schema = joi.date().messages(joi_vn_lang_1.default);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass Function", () => {
-            const schema = joi.func().messages(index_1.default);
+            const schema = joi.func().messages(joi_vn_lang_1.default);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass Object", () => {
-            const schema = joi.object().messages(index_1.default);
+            const schema = joi.object().messages(joi_vn_lang_1.default);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
         });
         it("Pass Symbol", () => {
-            const schema = joi.symbol().messages(index_1.default);
+            const schema = joi.symbol().messages(joi_vn_lang_1.default);
             const { error } = schema.validate(null);
             console.log(error.details[0].message);
             expect(error).toBeDefined();
